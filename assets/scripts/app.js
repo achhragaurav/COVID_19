@@ -17,3 +17,7 @@ const mapClickAPIDataGenerated = () => {
   });
 };
 mapClickAPIDataGenerated();
+const newFunc = () => {
+  console.log("Hell");
+};
+newFunc();
