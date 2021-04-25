@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/achhragaurav/COVID_19.git"
+  },
+  "bugs": {
+    "url": "https://github.com/achhragaurav/COVID_19/issues"
+  },
+  "homepage": "https://github.com/achhragaurav/COVID_19#readme"
 }
