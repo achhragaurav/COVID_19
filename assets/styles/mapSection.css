@@ -138,6 +138,7 @@
   z-index: 0;
   bottom: -1%;
   left: 12%;
+  overflow: hidden;
 }
 .map {
   display: flex;

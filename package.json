@@ -4,7 +4,9 @@
   "description": "covid app",
   "main": "/scripts/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "build:dev": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/achhragaurav/COVID_19/issues"
   },
-  "homepage": "https://github.com/achhragaurav/COVID_19#readme"
+  "homepage": "https://github.com/achhragaurav/COVID_19#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
 }

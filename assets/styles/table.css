@@ -28,26 +28,9 @@
   padding-top: 2rem;
 }
 .days {
+  width: 70%;
   display: flex;
-  width: 21em;
-  height: 10em;
-  align-items: center;
-  justify-content: center;
-}
-.days ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  width: 125%;
-}
-.days ul li {
-  width: 25.781px;
-  height: 18px;
-  padding: 1.5rem;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 .dates {
   width: 21em;
@@ -67,6 +50,32 @@
   padding: 1rem 0;
   text-align: center;
 }
+.dates ul ul {
+  width: 0%;
+  list-style: none;
+  display: flex;
+  transition: all 0.3s ease;
+  background: var(--light-grey);
+  text-align: center;
+  padding: 0;
+  overflow: hidden;
+}
+.dates ul ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.dates ul:last-child {
+  overflow-x: hidden;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  transition: all 0.3s ease;
+  background: var(--light-grey);
+  text-align: center;
+}
+
 #left {
   transition: all 0.3s ease;
   padding: 0.5rem 0.7rem;
