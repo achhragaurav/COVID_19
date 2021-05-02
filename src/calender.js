@@ -2,15 +2,13 @@ export const calenderFunc = () => {
   const datesUL = document.querySelector(".dates ul");
   const datesLeft = document.getElementById("left");
   const datesRight = document.getElementById("right");
-  let counter = 0;
   const date = new Date();
-  const day = date.getDate();
+  const todayDate = date.getDate();
   let year = date.getFullYear();
   const currentMonth = new Date().getMonth() + 1;
   const monthDiv = document.querySelector(".month-div");
   const yearDiv = document.querySelector(".year-div");
   let displayMonth = currentMonth;
-  let currentInViewUL = datesUL.displayMonth;
 
   const monthNames = [
     "January",
@@ -28,7 +26,6 @@ export const calenderFunc = () => {
   ];
   let dayss = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
   let displayMonthName = monthNames[displayMonth - 1];
-  console.log(displayMonthName);
   monthDiv.textContent = displayMonthName;
   yearDiv.textContent = year;
 
@@ -70,7 +67,25 @@ export const calenderFunc = () => {
       datesUL.appendChild(monthUL);
     }
   };
-  renderCal("", displayMonthName, year);
+  renderCal(todayDate, displayMonthName, year);
+
+  const todayDateHighLighter = () => {
+    const todayMonthUL = datesUL.firstElementChild;
+    console.log(todayMonthUL);
+    if (todayMonthUL.className === monthNames[displayMonth - 1]) {
+      const todayMonthDatesLI = todayMonthUL.querySelectorAll("li");
+      todayMonthDatesLI.forEach((li) => {
+        if (li.id === todayDate.toString()) {
+          li.style.backgroundColor = "white";
+          li.style.color = "black";
+          li.style.borderRadius = "50%";
+          li.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+      });
+    }
+  };
 
   const paddingAdder = () => {
     const datesLi = datesUL.querySelectorAll("ul li");
@@ -91,11 +106,7 @@ export const calenderFunc = () => {
   paddingAdder();
   const monthAndYearAdder = (rightOrLeft) => {
     if (rightOrLeft === "left") {
-      datesUL.querySelectorAll("ul").forEach((ul) => {
-        ul.style.width = "0%";
-      });
       if (displayMonth === 1) {
-        console.log(displayMonth);
         displayMonth = 12;
         year--;
       } else {
@@ -104,66 +115,60 @@ export const calenderFunc = () => {
 
       displayMonthName = monthNames[displayMonth - 1];
       renderCal("", displayMonthName, year, true);
-      console.log(displayMonthName, year);
       monthDiv.textContent = displayMonthName;
       yearDiv.textContent = year;
 
       paddingAdder();
-      datesUL.firstChild.style.width = "100%";
-      console.log(datesUL.firstChild);
       datesUL.querySelector("ul li:last-child").scrollIntoView();
     } else if (rightOrLeft === "right") {
       if (displayMonth === 12) {
         console.log(displayMonth);
         displayMonth = 1;
         year++;
-        console.log(displayMonth, year);
       } else {
         displayMonth++;
         console.log(displayMonth, year);
       }
       displayMonthName = monthNames[displayMonth - 1];
       renderCal("", displayMonthName, year);
-      console.log(displayMonthName, year);
       monthDiv.textContent = displayMonthName;
       yearDiv.textContent = year;
     }
   };
 
   datesLeft.addEventListener("click", () => {
-    counter--;
-    let target = datesUL.querySelector(`.${displayMonthName}`);
-    if ((target.scrollLeft === 0 && counter === -1) || counter % 5 === 0) {
+    if (datesUL.querySelector("ul:first-of-type").scrollLeft === 0) {
       monthAndYearAdder("left");
+      paddingAdder();
+      datesUL
+        .querySelector("ul:nth-of-type(2)")
+        .querySelector("li")
+        .scrollIntoView();
+      datesUL.lastElementChild.remove();
     } else {
-      target.scrollBy({
+      datesUL.querySelector("ul").scrollBy({
         left: -335,
         behavior: "smooth",
       });
     }
   });
-  //Test
-  // datesUL.querySelector("ul").addEventListener("scroll", (e) => {
-  //   console.log(e);
-  //   console.log(datesUL.querySelector("ul").scrollLeft);
-  // });
-  //Test
+
   datesRight.addEventListener("click", () => {
-    counter++;
-    let target = datesUL.querySelector(`.${displayMonthName}`);
-    console.log(counter);
-    if (target.scrollLeft >= 1200 && counter % 5 === 0) {
-      console.log("hello");
+    if (datesUL.querySelector("ul:first-of-type").scrollLeft > 1100) {
+      console.log("RIGHT");
       monthAndYearAdder("right");
       paddingAdder();
-      target.querySelector("li").scrollIntoView();
+      datesUL
+        .querySelector("ul:first-of-type")
+        .querySelector("li")
+        .scrollIntoView();
+      datesUL.firstElementChild.remove();
     } else {
-      console.log("work");
-      console.log(target);
-      target.scrollBy({
+      datesUL.querySelector("ul").scrollBy({
         left: 335,
         behavior: "smooth",
       });
     }
   });
+  todayDateHighLighter();
 };
