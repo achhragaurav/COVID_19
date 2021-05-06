@@ -155,6 +155,7 @@
   stroke-width: 0.4px;
   position: relative;
   z-index: 20;
+  fill: transparent;
 }
 .map-section-map .map svg path:hover {
   fill: var(--yellow);

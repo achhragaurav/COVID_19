@@ -155,7 +155,6 @@ export const calenderFunc = () => {
 
   datesRight.addEventListener("click", () => {
     if (datesUL.querySelector("ul:first-of-type").scrollLeft > 1100) {
-      console.log("RIGHT");
       monthAndYearAdder("right");
       paddingAdder();
       datesUL

@@ -1,4 +1,5 @@
-import { sendHTTPRequest } from "./sendHTTPRequest.js";
+// import { sendHTTPRequest } from "./sendHTTPRequest.js";
+import { sendHTTP } from "./sendHTTPNew.js";
 
 export class casesDataFetcher {
   constructor(countryName) {
@@ -7,15 +8,16 @@ export class casesDataFetcher {
 
   fetch = () => {
     return new Promise((res, rej) => {
-      sendHTTPRequest(this.countryName)
+      sendHTTP(this.countryName)
         .then((response) => {
-          return response.data;
+          return response.response[0];
         })
         .then((data) => {
-          this.country = data.location;
-          this.cases = data.confirmed;
-          this.recovered = data.recovered;
-          this.deaths = data.deaths;
+          console.log(data);
+          this.country = data.country;
+          this.cases = data.cases.total;
+          this.recovered = data.cases.recovered;
+          this.deaths = data.deaths.total;
           res(this);
         });
     });
