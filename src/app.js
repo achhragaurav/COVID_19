@@ -1,6 +1,9 @@
 import * as screenDataShower from "./screenDataShower.js";
 import { calenderFunc } from "./calender.js";
-import { allCountryDataArray } from "./sendHTTPNew.js";
+import { sendHTTP } from "./sendHTTPNew.js";
+
+console.log("Hello World");
+
 // setInterval(sendHTTPRequest, 100000);
 window.onload = screenDataShower.screenDataShower("all");
 window.onload = calenderFunc();
@@ -13,10 +16,35 @@ const mapClickAPIDataGenerated = () => {
     console.log();
     country.addEventListener("click", (e) => {
       console.log(country.id);
-      screenDataShower.screenDataShower(country.id);
+      screenDataShower.screenDataShower(country.className);
       screenDataShower.countryFlagShower(country.id);
     });
   });
 };
 
 mapClickAPIDataGenerated();
+
+export const allCountryDataArray = [];
+
+const allCountryData = () => {
+  sendHTTP()
+    .then((res) => {
+      return res.response;
+    })
+    .then((res) => {
+      allCountryDataArray.push(...res);
+      console.log(allCountryDataArray);
+    });
+};
+window.onload = allCountryData();
+export const dataSearcher = (country) => {
+  console.log(country);
+  for (const countryData of allCountryDataArray) {
+    if (countryData.country === country) {
+      console.log(country);
+      return countryData;
+    }
+  }
+};
+
+console.log(allCountryDataArray);

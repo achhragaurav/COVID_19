@@ -1,5 +1,3 @@
-export const allCountryDataArray = [];
-
 export const sendHTTP = (country) => {
   return fetch(
     `https://covid-193.p.rapidapi.com/statistics${
@@ -23,11 +21,7 @@ export const sendHTTP = (country) => {
 };
 
 // Testing
-const path = document.querySelectorAll("path");
 
-path.forEach((path) => {
-  console.log(path.id);
-});
 const data = sendHTTP("all")
   .then((data) => {
     console.log(data.response);
@@ -40,12 +34,3 @@ const data = sendHTTP("all")
       }
     }
   });
-const allCountryData = sendHTTP()
-  .then((res) => {
-    return res.response;
-  })
-  .then((res) => {
-    allCountryDataArray.push(...res);
-    console.log(allCountryDataArray);
-  });
-console.log(allCountryData);
