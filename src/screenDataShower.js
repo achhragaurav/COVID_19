@@ -10,15 +10,21 @@ export const screenDataShower = async (country) => {
   const globalDeaths = document.querySelector(".deaths h2");
   const globalRecovered = document.querySelector(".recovered h2");
   const countriesName = document.querySelector(".countries h2");
+  const addedCasesInfected = document.querySelector(".msc:first-of-type h5");
+  const addedCasesActive = document.querySelector(".msc:nth-of-type(2) h5");
+  const addedCasesDeath = document.querySelector(".msc:nth-of-type(3) h5");
 
   if (country === "all") {
     const _casesDataFetcher = new casesDataFetcher(country);
     const data = await _casesDataFetcher.fetch();
-
+    console.log(data);
     globalInfected.textContent = `${data.cases}`;
     globalActive.textContent = data.cases - data.recovered - data.deaths;
     globalDeaths.textContent = data.deaths;
     globalRecovered.textContent = data.recovered;
+    addedCasesInfected.textContent = data.newCases;
+    addedCasesActive.textContent = data.newCases;
+    addedCasesDeath.textContent = data.newDeaths;
   } else {
     const dataa = await dataSearcher(country.baseVal);
     console.log(dataa);
@@ -27,6 +33,9 @@ export const screenDataShower = async (country) => {
     globalDeaths.textContent = dataa.deaths.total;
     globalRecovered.textContent = dataa.cases.recovered;
     countriesName.textContent = country.baseVal;
+    addedCasesInfected.textContent = dataa.cases.new;
+    addedCasesActive.textContent = dataa.cases.new;
+    addedCasesDeath.textContent = dataa.deaths.new;
   }
 };
 export const countryFlagShower = async (country) => {

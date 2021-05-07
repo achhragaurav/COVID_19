@@ -33,18 +33,13 @@ const allCountryData = () => {
     })
     .then((res) => {
       allCountryDataArray.push(...res);
-      console.log(allCountryDataArray);
     });
 };
 window.onload = allCountryData();
 export const dataSearcher = (country) => {
-  console.log(country);
   for (const countryData of allCountryDataArray) {
     if (countryData.country === country) {
-      console.log(country);
       return countryData;
     }
   }
 };
-
-console.log(allCountryDataArray);

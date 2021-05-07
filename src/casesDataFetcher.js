@@ -13,7 +13,8 @@ export class casesDataFetcher {
           return response.response[0];
         })
         .then((data) => {
-          console.log(data);
+          this.newCases = data.cases.new;
+          this.newDeaths = data.deaths.new;
           this.country = data.country;
           this.cases = data.cases.total;
           this.recovered = data.cases.recovered;

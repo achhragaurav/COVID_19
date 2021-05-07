@@ -22,17 +22,14 @@
   font-size: 1rem;
   padding: 0.3rem;
 }
-.map-section-cases {
-  display: flex;
-  justify-content: space-around;
-}
+
 /* Heading Section End */
 /* Cases Section Start */
 
 .map-section-cases {
   display: flex;
   justify-content: space-around;
-  width: 80%;
+  width: 95%;
   height: 15vh;
   align-items: center;
 }
@@ -40,9 +37,9 @@
   width: 4rem;
   height: 5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1.5fr;
   grid-template-rows: 0.5fr 1fr 0.5fr;
-  align-content: center;
+  align-content: space-around;
   justify-items: center;
   grid-column-gap: 10px;
   color: white;
@@ -54,6 +51,9 @@
   padding: 0.7em;
   border-radius: 5px;
   align-self: center;
+}
+.msc h5 {
+  margin-right: 100px;
 }
 .msc .flagGen {
   grid-row-start: 1;
