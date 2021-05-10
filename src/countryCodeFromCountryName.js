@@ -1,6 +1,8 @@
 export const countryCodeFromCountryName = (country) => {
   return fetch(
-    `https://restcountries.eu/rest/v2/name/${country}?fullText=true`,
+    `https://restcountries.eu/rest/v2/name/${
+      country === "Russia" ? "Russian Federation" : country
+    }?fullText=true`,
     {
       method: "GET",
     }
@@ -10,8 +12,6 @@ export const countryCodeFromCountryName = (country) => {
       return datarec;
     })
     .then((datarec) => {
-      console.log(country);
-      console.log(datarec);
-      return datarec[0].alpha2Code.toLowerCase();
+      return datarec[0].alpha2Code;
     });
 };

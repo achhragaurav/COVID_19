@@ -48,12 +48,13 @@
   grid-row-start: 1;
   grid-row-end: 3;
   font-size: 1.3em;
-  padding: 0.7em;
+  padding: 0.5em;
   border-radius: 5px;
   align-self: center;
 }
 .msc h5 {
   margin-right: 100px;
+  font-size: 0.7rem;
 }
 .msc .flagGen {
   grid-row-start: 1;
@@ -65,7 +66,7 @@
 }
 .msc .flagGen i {
   font-size: 1.3em;
-  padding: 0.4em;
+  padding: 0.3em;
 }
 /* .msc .flagGen img {
   width: 48px;

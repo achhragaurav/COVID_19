@@ -1,3 +1,6 @@
+import { previousDateDataSearcher } from "./app.js";
+import { screenDataShower } from "./screenDataShower.js";
+
 export const calenderFunc = () => {
   const datesUL = document.querySelector(".dates ul");
   const datesLeft = document.getElementById("left");
@@ -60,6 +63,23 @@ export const calenderFunc = () => {
       dayOfDate.textContent = eachDate.className;
       eachDate.append(dayOfDate);
       monthUL.append(eachDate);
+      eachDate.addEventListener("click", (e) => {
+        let completeDate = `${year}-${
+          displayMonth.toString().length === 2
+            ? displayMonth
+            : "0" + displayMonth
+        }-${eachDate.id.length === 2 ? eachDate.id : "0" + eachDate.id}`;
+        console.log(completeDate, eachDate.id.length);
+        const previousDatesData = previousDateDataSearcher();
+        console.log(previousDatesData);
+        for (const iterator of previousDatesData.response) {
+          if (iterator.day === completeDate) {
+            screenDataShower("", iterator);
+          }
+        }
+        todayDateHighLighter(eachDate);
+        // console.log(previousDateDataDisplayer());
+      });
     }
     if (beafter) {
       datesUL.insertBefore(monthUL, datesUL.firstChild);
@@ -69,10 +89,20 @@ export const calenderFunc = () => {
   };
   renderCal(todayDate, displayMonthName, year);
 
-  const todayDateHighLighter = () => {
+  const todayDateHighLighter = (liElem) => {
     const todayMonthUL = datesUL.firstElementChild;
-    console.log(todayMonthUL);
-    if (todayMonthUL.className === monthNames[displayMonth - 1]) {
+    if (liElem) {
+      const allLI = todayMonthUL.children;
+      for (const li of allLI) {
+        console.log(li);
+        li.style.backgroundColor = "#282b2e";
+        li.style.color = "white";
+        li.style.borderRadius = "100%";
+      }
+      liElem.style.backgroundColor = "white";
+      liElem.style.color = "black";
+      liElem.style.borderRadius = "50%";
+    } else if (todayMonthUL.className === monthNames[displayMonth - 1]) {
       const todayMonthDatesLI = todayMonthUL.querySelectorAll("li");
       todayMonthDatesLI.forEach((li) => {
         if (li.id === todayDate.toString()) {

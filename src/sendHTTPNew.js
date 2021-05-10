@@ -1,6 +1,7 @@
-export const sendHTTP = (country) => {
+"https://covid-193.p.rapidapi.com/history?country=all";
+export const sendHTTP = (country, history) => {
   return fetch(
-    `https://covid-193.p.rapidapi.com/statistics${
+    `https://covid-193.p.rapidapi.com/${history ? "history" : "statistics"}${
       country ? `?country=${country}` : ""
     }`,
     {

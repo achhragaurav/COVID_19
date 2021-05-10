@@ -1,10 +1,8 @@
-import { allCountryDataArray } from "./app.js";
 import { casesDataFetcher } from "./casesDataFetcher.js";
-import { countryCodeFromCountryName } from "./countryCodeFromCountryName.js";
 import { creater } from "./flags.js";
 import { dataSearcher } from "./app.js";
 
-export const screenDataShower = async (country) => {
+export const screenDataShower = async (country, passedData) => {
   const globalInfected = document.querySelector(".infected h2");
   const globalActive = document.querySelector(".active h2");
   const globalDeaths = document.querySelector(".deaths h2");
@@ -25,6 +23,14 @@ export const screenDataShower = async (country) => {
     addedCasesInfected.textContent = data.newCases;
     addedCasesActive.textContent = data.newCases;
     addedCasesDeath.textContent = data.newDeaths;
+  } else if (country === "" && passedData) {
+    globalInfected.textContent = `${passedData.cases.total}`;
+    globalActive.textContent = passedData.cases.active;
+    globalDeaths.textContent = passedData.deaths.total;
+    globalRecovered.textContent = passedData.cases.recovered;
+    addedCasesInfected.textContent = passedData.cases.new;
+    addedCasesActive.textContent = passedData.cases.new;
+    addedCasesDeath.textContent = passedData.deaths.new;
   } else {
     const dataa = await dataSearcher(country.baseVal);
     console.log(dataa);

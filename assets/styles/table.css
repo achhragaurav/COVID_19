@@ -140,9 +140,11 @@
   justify-content: space-around;
 }
 .countriesUL li {
-  width: 95%;
+  width: 100%;
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
+  text-align: center;
 }
 .countriesUL li h1 {
   text-align: start;
@@ -150,6 +152,7 @@
   font-weight: 300;
   font-size: 1rem;
   color: var(--white-grey);
+  text-align: start;
 }
 .countriesUL li p {
   font-weight: 300;
@@ -159,13 +162,8 @@
 .countriesUL li .flag {
   padding-right: 2rem;
 }
-.cases {
-  list-style: none;
-  width: 30%;
-  height: 100%;
-}
-.cases li {
-  padding: 0.55rem 2rem;
+.countriesUL li h3 {
+  justify-self: end;
 }
 .cases-info-section-part-3 {
   width: 100%;
