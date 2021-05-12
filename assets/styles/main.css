@@ -6,6 +6,45 @@
   padding: 0;
   box-sizing: border-box;
 }
+.loading-modal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 500;
+  background: #00000048;
+  display: none;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 50px;
+}
+.loading-modal h1 {
+  position: relative;
+  top: 90%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+.calender-loading-modal {
+  width: 41vh;
+  height: 9vh;
+  position: absolute;
+  z-index: 500;
+  background: #ffffff;
+  display: none;
+  top: 14%;
+  left: 78%;
+  color: black;
+  font-size: 50px;
+  border-radius: 40px;
+  text-align: center;
+}
+.calender-loading-modal h1 {
+  top: 80%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
 :root {
   --light-grey: #282b2e;
   --dark-grey: #1c1f22;

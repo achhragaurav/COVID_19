@@ -201,3 +201,8 @@ export const calenderFunc = () => {
   });
   todayDateHighLighter();
 };
+
+export const casesUpdatedDate = (data) => {
+  const date = document.querySelector(".added-date");
+  date.textContent = data.response[0].day;
+};

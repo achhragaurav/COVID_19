@@ -1,7 +1,7 @@
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
+function drawChart(data) {
   var data = google.visualization.arrayToDataTable([
     ["Month", "Cases"],
     ["June", 2000],
@@ -10,10 +10,6 @@ function drawChart() {
     ["Sept", 3000],
   ]);
 
-  var options = {
-    title: "Company Performance",
-    legend: { position: "bottom" },
-  };
   var chart = new google.visualization.LineChart(
     document.getElementById("curve_chart")
   );

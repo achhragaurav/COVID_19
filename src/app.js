@@ -3,13 +3,28 @@ import * as screenDataShower from "./screenDataShower.js";
 import { calenderFunc } from "./calender.js";
 import { sendHTTP } from "./sendHTTPNew.js";
 import { highestCasesDisplayer } from "./highestCasesDisplayer.js";
+import { casesUpdatedDate } from "./calender.js";
 
 export const allCountryDataArray = [];
 export const arrayOfHighestCases = [];
 export const filteredCountriesArray = [];
 export const previousDateArray = [];
 
+export const loadingModal = (openOrClose, calender) => {
+  let modal;
+  if (calender === "calender") {
+    modal = document.querySelector(".calender-loading-modal");
+  } else {
+    modal = document.querySelector(".loading-modal");
+  }
+  openOrClose === true
+    ? (modal.style.display = "flex")
+    : (modal.style.display = "none");
+};
+
 export const allCountryData = async () => {
+  loadingModal(true);
+
   return sendHTTP()
     .then((res) => {
       return res.response;
@@ -23,6 +38,7 @@ export const allCountryData = async () => {
           filteredCountriesArray.push(res[index]);
         }
       }
+      loadingModal(false);
       return allCountryDataArray;
     });
 
@@ -65,12 +81,26 @@ highestCasesDisplayer();
 // };
 
 // highestCasesDisplayer();
-
+const a = [1, 2, 3];
+for (const aa of a) {
+  if (aa === 2) {
+    console.log(aa);
+  }
+}
 const previousDateDataGenerator = (country) => {
-  console.log(country);
+  for (let index = 0; index < previousDateArray.length; index++) {
+    const element = previousDateArray[index];
+    if (element.parameters.country === country.baseVal) {
+      return element.parameters.country;
+    }
+  }
+  loadingModal(true, "calender");
   sendHTTP(country.baseVal || country, true).then((res) => {
     previousDateArray.push(res);
+    console.log("Hello");
     console.log(previousDateArray);
+    loadingModal(false, "calender");
+    casesUpdatedDate(res);
   });
 };
 previousDateDataGenerator("all");
