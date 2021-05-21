@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/styles/mapSection.css" />
     <link rel="stylesheet" href="assets/styles/table.css" />
     <script src="/src/test.js" type="module" defer></script>
+    <script src="/src/searchBtn.js" type="module" defer></script>
 
     <!-- GOOGLE CHART -->
     <script
@@ -48,6 +49,16 @@
     </div>
     <!-- Navbar Sidebar End-->
     <section class="map-section">
+      <div class="search-modal">
+        <ul>
+        </ul>
+        <div class="searchBarModal">
+          <input type="search" name="" id="searchBar" />
+        </div>
+        <div class="closeModal"><button>X</button></div>
+        <div class="searchCountryBtn"><button>Search</button></div>
+      </div>
+
       <div class="map-section-heading">
         <h1>Coronavirus COVID-19</h1>
         <h5 id="country-heading">Global Cases</h5>

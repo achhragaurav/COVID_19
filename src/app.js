@@ -4,6 +4,8 @@ import { calenderFunc } from "./calender.js";
 import { sendHTTP } from "./sendHTTPNew.js";
 import { highestCasesDisplayer } from "./highestCasesDisplayer.js";
 import { casesUpdatedDate } from "./calender.js";
+import { mapDataFunction } from "./mapDataFunction.js";
+import { searchBtnFunction } from "./searchBtn.js";
 
 export const allCountryDataArray = [];
 export const arrayOfHighestCases = [];
@@ -91,6 +93,8 @@ const previousDateDataGenerator = (country) => {
   for (let index = 0; index < previousDateArray.length; index++) {
     const element = previousDateArray[index];
     if (element.parameters.country === country.baseVal) {
+      console.log(element);
+      mapDataFunction(element);
       return element.parameters.country;
     }
   }
@@ -99,6 +103,7 @@ const previousDateDataGenerator = (country) => {
     previousDateArray.push(res);
     console.log("Hello");
     console.log(previousDateArray);
+    mapDataFunction(res);
     loadingModal(false, "calender");
     casesUpdatedDate(res);
   });
@@ -120,3 +125,10 @@ export const previousDateDataSearcher = () => {
     }
   }
 };
+
+const searchBtn = document.querySelector(
+  ".map-section-buttons button:first-of-type"
+);
+searchBtn.addEventListener("click", () => {
+  searchBtnFunction();
+});

@@ -1,13 +1,12 @@
 google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
 
-function drawChart(data) {
+export function drawChart(data, month) {
   var data = google.visualization.arrayToDataTable([
     ["Month", "Cases"],
-    ["June", 2000],
-    ["July", 4000],
-    ["Aug", 6000],
-    ["Sept", 3000],
+    [month[0], data[0]],
+    [month[1], data[1]],
+    [month[2], data[2]],
+    [month[3], data[3]],
   ]);
 
   var chart = new google.visualization.LineChart(
