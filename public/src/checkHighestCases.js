@@ -13,14 +13,11 @@ export const highestCasesData = async () => {
         return 0;
       }
     });
-    console.log(arrayofHigh);
     const slicedArray = arrayofHigh.slice(1, 7);
     for (let index = 0; index < slicedArray.length; index++) {
       arrayOfHighestCases.push(slicedArray[index]);
-      console.log(index);
     }
 
-    console.log(arrayOfHighestCases);
     return arrayOfHighestCases;
   });
 

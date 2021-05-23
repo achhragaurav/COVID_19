@@ -45,7 +45,6 @@ export const calenderFunc = () => {
 
     for (const [i, days] of daysULLI.entries()) {
       days.id = i;
-      console.log(i, days);
     }
     const monthUL = document.createElement("ul");
     monthUL.className = `${month}`;
@@ -69,16 +68,13 @@ export const calenderFunc = () => {
             ? displayMonth
             : "0" + displayMonth
         }-${eachDate.id.length === 2 ? eachDate.id : "0" + eachDate.id}`;
-        console.log(completeDate, eachDate.id.length);
         const previousDatesData = previousDateDataSearcher();
-        console.log(previousDatesData);
         for (const iterator of previousDatesData.response) {
           if (iterator.day === completeDate) {
             screenDataShower("", iterator);
           }
         }
         todayDateHighLighter(eachDate);
-        // console.log(previousDateDataDisplayer());
       });
     }
     if (beafter) {
@@ -94,7 +90,6 @@ export const calenderFunc = () => {
     if (liElem) {
       const allLI = todayMonthUL.children;
       for (const li of allLI) {
-        console.log(li);
         li.style.backgroundColor = "#282b2e";
         li.style.color = "white";
         li.style.borderRadius = "100%";
@@ -154,12 +149,10 @@ export const calenderFunc = () => {
       datesUL.querySelector("ul li:last-child").scrollIntoView();
     } else if (rightOrLeft === "right") {
       if (displayMonth === 12) {
-        console.log(displayMonth);
         displayMonth = 1;
         year++;
       } else {
         displayMonth++;
-        console.log(displayMonth, year);
       }
       displayMonthName = monthNames[displayMonth - 1];
       renderCal("", displayMonthName, year);

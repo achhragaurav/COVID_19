@@ -15,7 +15,6 @@ export const screenDataShower = async (country, passedData) => {
   if (country === "all") {
     const _casesDataFetcher = new casesDataFetcher(country);
     const data = await _casesDataFetcher.fetch();
-    console.log(data);
     globalInfected.textContent = `${data.cases}`;
     globalActive.textContent = data.cases - data.recovered - data.deaths;
     globalDeaths.textContent = data.deaths;
@@ -33,7 +32,6 @@ export const screenDataShower = async (country, passedData) => {
     addedCasesDeath.textContent = passedData.deaths.new;
   } else {
     const dataa = await dataSearcher(country.baseVal);
-    console.log(dataa);
     globalInfected.textContent = `${dataa.cases.total}`;
     globalActive.textContent = dataa.cases.active;
     globalDeaths.textContent = dataa.deaths.total;
@@ -57,7 +55,6 @@ export const countryFlagShower = async (country) => {
   // if (condition) {
   // }
   flagCountry.textContent = "Country";
-  console.log(country);
   if (flagi) {
     flagGen.append(createFlagImage);
     flagGen.removeChild(flagi);

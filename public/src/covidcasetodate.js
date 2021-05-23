@@ -8,9 +8,7 @@ fetch(
     },
   }
 )
-  .then((response) => {
-    console.log(response);
-  })
+  .then((response) => {})
   .catch((err) => {
     console.error(err);
   });

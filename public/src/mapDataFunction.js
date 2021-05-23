@@ -45,8 +45,6 @@ export const mapDataFunction = (data) => {
     month.toString().length === 1 ? "0" + (month - 3).toString() : month
   }-${date.toString().length === 1 ? "0" + date.toString() : date}`;
 
-  console.log(assembledDate);
-
   const ArrayOfCasesForMap = [];
   let monthOneData;
   let monthTwoData;
@@ -57,7 +55,6 @@ export const mapDataFunction = (data) => {
     const element = data.response[index];
     if (element.day === assembledDate) {
       monthOneData = element.cases.total;
-      console.log(element.cases.total);
       break;
     }
   }
@@ -65,7 +62,6 @@ export const mapDataFunction = (data) => {
     const element = data.response[index];
     if (element.day === assembledDateTwo) {
       monthTwoData = element.cases.total;
-      console.log(element.cases.total);
       break;
     }
   }
@@ -73,7 +69,6 @@ export const mapDataFunction = (data) => {
     const element = data.response[index];
     if (element.day === assembledDateThree) {
       monthThreeData = element.cases.total;
-      console.log(element.cases.total);
       break;
     }
   }
@@ -81,7 +76,6 @@ export const mapDataFunction = (data) => {
     const element = data.response[index];
     if (element.day === assembledDateFour) {
       monthFourData = element.cases.total;
-      console.log(element.cases.total);
       break;
     }
   }
@@ -89,18 +83,6 @@ export const mapDataFunction = (data) => {
   ArrayOfCasesForMap.push(monthTwoData);
   ArrayOfCasesForMap.push(monthThreeData);
   ArrayOfCasesForMap.push(monthFourData);
-  console.log(ArrayOfCasesForMap);
   drawChart(ArrayOfCasesForMap, monthArray);
   return ArrayOfCasesForMap;
 };
-
-//  else if (element.day === assembledDateTwo) {
-//   monthTwoData = element.cases.total;
-//   console.log(element.cases.total);
-// } else if (element.day === assembledDateThree) {
-//   monthTwoData = element.cases.total;
-//   console.log(element.cases.total);
-// } else if (element.day === assembledDateFour) {
-//   monthTwoData = element.cases.total;
-//   console.log(element.cases.total);
-// }

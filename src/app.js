@@ -46,7 +46,6 @@ export const allCountryData = async () => {
 
   // Highest Cases
 };
-console.log("Hello World");
 
 // setInterval(sendHTTPRequest, 100000);
 window.onload = screenDataShower.screenDataShower("all");
@@ -79,7 +78,6 @@ highestCasesDisplayer();
 // checkHighestCases();
 
 // const highestCasesDisplayer = () => {
-//   console.log(highestCasesData);
 // };
 
 // highestCasesDisplayer();

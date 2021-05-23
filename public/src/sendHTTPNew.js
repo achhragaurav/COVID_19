@@ -25,13 +25,11 @@ export const sendHTTP = (country, history) => {
 
 const data = sendHTTP("all")
   .then((data) => {
-    console.log(data.response);
     return data.response;
   })
   .then((data) => {
     for (const iterator of data) {
       if (iterator.country === "India") {
-        console.log(iterator.cases.total);
       }
     }
   });

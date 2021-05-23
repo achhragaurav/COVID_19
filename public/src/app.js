@@ -46,7 +46,6 @@ export const allCountryData = async () => {
 
   // Highest Cases
 };
-console.log("Hello World");
 
 // setInterval(sendHTTPRequest, 100000);
 window.onload = screenDataShower.screenDataShower("all");
@@ -79,21 +78,18 @@ highestCasesDisplayer();
 // checkHighestCases();
 
 // const highestCasesDisplayer = () => {
-//   console.log(highestCasesData);
 // };
 
 // highestCasesDisplayer();
 const a = [1, 2, 3];
 for (const aa of a) {
   if (aa === 2) {
-    console.log(aa);
   }
 }
 const previousDateDataGenerator = (country) => {
   for (let index = 0; index < previousDateArray.length; index++) {
     const element = previousDateArray[index];
     if (element.parameters.country === country.baseVal) {
-      console.log(element);
       mapDataFunction(element);
       return element.parameters.country;
     }
@@ -101,8 +97,7 @@ const previousDateDataGenerator = (country) => {
   loadingModal(true, "calender");
   sendHTTP(country.baseVal || country, true).then((res) => {
     previousDateArray.push(res);
-    console.log("Hello");
-    console.log(previousDateArray);
+
     mapDataFunction(res);
     loadingModal(false, "calender");
     casesUpdatedDate(res);
@@ -116,11 +111,8 @@ export const previousDateDataSearcher = () => {
       ? "all"
       : displayedCountry.textContent
   }`;
-  console.log(country);
   for (let index = 0; index < previousDateArray.length; index++) {
-    console.log(previousDateArray[index], country);
     if (previousDateArray[index].parameters.country === country) {
-      console.log("Hello");
       return previousDateArray[index];
     }
   }

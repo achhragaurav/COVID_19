@@ -21,7 +21,6 @@ export const highestCasesDisplayer = () => {
       let index = 0;
 
       for (const each of countriesUL.children) {
-        console.log(Object.entries(data)[index]);
         each.querySelector("h1").textContent = `${
           Object.entries(data)[index][1]["country"]
         }`;
@@ -54,7 +53,6 @@ export const highestCasesDisplayer = () => {
       }
     }
     dataSeter("total", "cases");
-    console.log(infectedTableBtn, infectedDeathBtn, infectedRecoveredBtn);
     infectedTableBtn.addEventListener("click", () => {
       dataSeter("total", "cases");
     });
