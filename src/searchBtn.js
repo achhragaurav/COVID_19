@@ -1,4 +1,6 @@
 import { allCountryDataArray } from "./app.js";
+import { screenDataShower, countryFlagShower } from "./screenDataShower.js";
+
 import { dataSearcher } from "./app.js";
 const modal = document.querySelector(".search-modal");
 const btn = document.querySelector(".map-section-buttons button");
@@ -41,13 +43,18 @@ const modalSearchFunction = (e) => {
         modal.querySelector("ul").innerHTML = "";
         allCountryDataArray.forEach((element) => {
           if (regexCreator.test(element.country)) {
-            console.log(element);
             const li = document.createElement("li");
             const p = document.createElement("p");
             p.textContent = `${element.country}`;
             li.append(p);
             li.addEventListener("click", () => {
-              console.log(element);
+              screenDataShower("", element).then((data) => {
+                const countryID = document.querySelector(
+                  `.${element.country}`
+                ).id;
+                countryFlagShower(countryID);
+                openCloseModal();
+              });
             });
             modal.querySelector("ul").append(li);
           }

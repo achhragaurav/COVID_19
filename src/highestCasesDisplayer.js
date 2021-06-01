@@ -2,6 +2,7 @@ import { highestCasesData } from "./checkHighestCases.js";
 import { allCountryData } from "./app.js";
 import { creater } from "./flags.js";
 import { countryCodeFromCountryName } from "./countryCodeFromCountryName.js";
+import { counterFunction } from "./counter.js";
 
 export const highestCasesDisplayer = () => {
   return highestCasesData().then((data) => {
@@ -22,19 +23,23 @@ export const highestCasesDisplayer = () => {
 
       for (const each of countriesUL.children) {
         console.log(Object.entries(data)[index]);
-        each.querySelector("h1").textContent = `${
-          Object.entries(data)[index][1]["country"]
-        }`;
+        each.querySelector("h1").textContent =
+          Object.entries(data)[index][1]["country"];
+
         each.querySelector("p").textContent = `${
           Object.entries(data)[index][1]["cases"]["new"]
             ? Object.entries(data)[index][1]["cases"]["new"]
             : "NA"
         }`;
-        each.querySelector("h3").textContent = `${
-          Object.entries(data)[index][1][caseOrDeath][info]
-            ? Object.entries(data)[index][1][caseOrDeath][info]
-            : "NA"
-        }`;
+        each
+          .querySelector("h3")
+          .setAttribute(
+            "data-target",
+            Object.entries(data)[index][1][caseOrDeath][info]
+              ? Object.entries(data)[index][1][caseOrDeath][info]
+              : "NA"
+          );
+        counterFunction(each.querySelector("h3"));
 
         // FLAG
         const flag = document.createElement("img");

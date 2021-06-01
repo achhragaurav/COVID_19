@@ -1,29 +1,39 @@
 import { casesDataFetcher } from "./casesDataFetcher.js";
 import { creater } from "./flags.js";
 import { dataSearcher } from "./app.js";
+import { counterFunction } from "./counter.js";
 
+const globalInfected = document.querySelector(".infected h2");
+const globalActive = document.querySelector(".active h2");
+const globalDeaths = document.querySelector(".deaths h2");
+const globalRecovered = document.querySelector(".recovered h2");
+const countriesName = document.querySelector(".countries h2");
+const addedCasesInfected = document.querySelector(".msc:first-of-type h5");
+const addedCasesActive = document.querySelector(".msc:nth-of-type(2) h5");
+const addedCasesDeath = document.querySelector(".msc:nth-of-type(3) h5");
 export const screenDataShower = async (country, passedData) => {
-  const globalInfected = document.querySelector(".infected h2");
-  const globalActive = document.querySelector(".active h2");
-  const globalDeaths = document.querySelector(".deaths h2");
-  const globalRecovered = document.querySelector(".recovered h2");
-  const countriesName = document.querySelector(".countries h2");
-  const addedCasesInfected = document.querySelector(".msc:first-of-type h5");
-  const addedCasesActive = document.querySelector(".msc:nth-of-type(2) h5");
-  const addedCasesDeath = document.querySelector(".msc:nth-of-type(3) h5");
-
   if (country === "all") {
     const _casesDataFetcher = new casesDataFetcher(country);
     const data = await _casesDataFetcher.fetch();
-    console.log(data);
-    globalInfected.textContent = `${data.cases}`;
-    globalActive.textContent = data.cases - data.recovered - data.deaths;
-    globalDeaths.textContent = data.deaths;
-    globalRecovered.textContent = data.recovered;
-    addedCasesInfected.textContent = data.newCases;
-    addedCasesActive.textContent = data.newCases;
-    addedCasesDeath.textContent = data.newDeaths;
+
+    globalInfected.setAttribute("data-target", data.cases);
+    globalActive.setAttribute(
+      "data-target",
+      data.cases - data.recovered - data.deaths
+    );
+    globalDeaths.setAttribute("data-target", data.deaths);
+    globalRecovered.setAttribute("data-target", data.recovered);
+    addedCasesInfected.setAttribute("data-target", data.newCases);
+    addedCasesActive.setAttribute("data-target", data.newCases);
+    addedCasesDeath.setAttribute("data-target", data.newDeaths);
+    counterFunction(globalInfected);
+    counterFunction(globalActive);
+    counterFunction(globalDeaths);
+    counterFunction(globalRecovered);
+    counterFunction(addedCasesInfected);
+    counterFunction(addedCasesDeath);
   } else if (country === "" && passedData) {
+    console.log("ScreenDataShower is executed");
     globalInfected.textContent = `${passedData.cases.total}`;
     globalActive.textContent = passedData.cases.active;
     globalDeaths.textContent = passedData.deaths.total;

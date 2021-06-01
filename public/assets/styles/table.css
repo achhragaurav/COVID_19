@@ -218,7 +218,7 @@
   .cases-info-section {
     all: unset;
     position: relative;
-    top: 80vw;
+    top: 100vw;
     width: 100%;
     height: 120%;
     display: flex;
@@ -249,7 +249,7 @@
   }
   .cases-info-section-part-3 {
     width: 80%;
-    height: 40%;
+    height: 60vh;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -263,5 +263,6 @@
   }
   .graph .curve_chart {
     width: 80%;
+    min-height: 80%;
   }
 }
